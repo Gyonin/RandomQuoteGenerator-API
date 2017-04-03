@@ -1,0 +1,35 @@
+body {
+  text-align: center;
+  background-color: green;
+  color: white;
+  background-image: url("http://spacenode.com/dc_includes/fbimg.php?url=https%3A%2F%2Fwonderworlds.org%2Fimages%2Fsnow%2Fsnow-falling-black-background.jpg");
+  background-size: cover;
+}
+
+.title {
+  padding: 20px 0px;
+}
+
+.quote-box {
+  border: 5px solid white;
+  margin-bottom: 20px;
+  background-color:rgba(0, 0, 0, 0.6);
+  padding: 20px;
+}
+
+span {
+  font-size: 30px;
+}
+
+#author {
+  font-style: italic;
+}
+
+#tweetButton {
+  background-color: #00aced;
+}
+
+.btn {
+  font-weight: bold;
+}
+
