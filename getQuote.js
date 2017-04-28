@@ -1,30 +1,24 @@
 $(document).ready(function() {
 
-  var quote;
-  var author;
+var quote;
+var quoteone;
+var author;
+
 
   function getQuote() {
-    $.ajax({
-      url: "http://api.forismatic.com/api/1.0/",
-      jsonp: "jsonp",
-      dataType: "jsonp",
-      data: {
-        method: "getQuote",
-        lang: "en",
-        format: "jsonp"
-      },
-      success: function(response) {
-        quote = response.quoteText;
-        author = response.quoteAuthor;
-        $("#quote").text(quote);
-        if (response.quoteAuthor) {
-          $("#author").text("- " + author);
-        } else {
-          $("#author").text("- unknown");
-        }
-      }
+    
+    var number = Math.floor(Math.random() * (15 - 0 + 1)) + 0;
+    $.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]="+number+"&callback=", function(data) {
+    console.log(data);
+    quoteone = data[0].content;
+    quote = quoteone.replace(/[</p>]/g, "")
+    author = data[0].title;
+      
+    $("#quote").html(quote);
+    $("#author").html("- "+author);
+      
     });
-	console.log(quote);
+    
   }
 
   getQuote();
@@ -36,5 +30,5 @@ $(document).ready(function() {
   $('#tweetButton').on('click', function() {
     window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(quote+"- "+author));
   });
-
+  
 });
