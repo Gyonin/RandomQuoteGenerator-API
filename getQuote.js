@@ -11,7 +11,7 @@ var author;
     $.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]="+number+"&callback=", function(data) {
     console.log(data);
     quoteone = data[0].content;
-    quote = quoteone.replace(/[</p>]/g, "")
+    quote = quoteone.replace(/(<p[^>]+?>|<p>|<\/p>)/img, "");
     author = data[0].title;
       
     $("#quote").html(quote);
